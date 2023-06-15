@@ -1,6 +1,7 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 import CartContext from "./cart-context";
+import axios from "axios";
 
 const CartProvider = (props) => {
   const [items, setItems] = useState([]);
@@ -13,11 +14,21 @@ const CartProvider = (props) => {
       ),
     [items]
   );
+useEffect(()=>{
+  crudcrudToCntx();
+},[])
+  const crudcrudToCntx = async() => {
+const response = await axios.get('https://crudcrud.com/api/7e7b57dc0aeb45afa77ee7357b6b3549/cart')
+setItems(response.data);
+  }
 
   const addItemToCartHandler = (item) => {
     const itemIndex = items.findIndex((el) => el.id === item.id);
     if (itemIndex === -1) {
-      setItems((prev) => [...prev, item]);
+      axios.post('https://crudcrud.com/api/7e7b57dc0aeb45afa77ee7357b6b3549/cart',item)
+      .then((res)=>{
+        crudcrudToCntx();
+      })
       return;
     }
 

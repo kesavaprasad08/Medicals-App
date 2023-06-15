@@ -9,10 +9,13 @@ import CandyContext from '../../store/medicine-context';
 const AvailableCandies = () => {
 
   const MedicineCtx = useContext(CandyContext);
-  console.log(MedicineCtx.items);
+  // console.log(MedicineCtx.items);
   
+  console.log(MedicineCtx)
   const medicineList = MedicineCtx.items.map((medicine) => (
+    
     <MedicineItem
+    crId={medicine._id}
       id={medicine.id}
       key={medicine.id}
       name={medicine.name}

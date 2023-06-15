@@ -12,7 +12,11 @@ const Cart = (props) => {
   const totalAmount = cntx?.totalAmount?.toFixed(2); 
 
   const cartItemAddHandler = (item) => {
+    console.log(item)
+    if(item.availableQuantity > 1){
+
     cntx.addItem({ ...item, quantity: 1 });
+    }
   };
   const cartItemRemoveHandler = (id) => {
     cntx.removeItem(id);

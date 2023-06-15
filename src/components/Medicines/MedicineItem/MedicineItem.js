@@ -2,9 +2,9 @@ import MedicineItemForm from "./MedicineItemForm";
 import classes from "./MedicineItem.module.css";
 
 const MedicineItem = (props) => {
- console.log(props)
+//  console.log(props)
   const price = `Rs.${Number(props.price).toFixed(2)}`;
-console.log(props)
+// console.log(props)
   return (
     <li className={classes.meal}>
       <div>
@@ -16,6 +16,7 @@ console.log(props)
       </div>
       <div>
         <MedicineItemForm
+        crId={props.crId}
           id={props.id}
           name={props.name}
           description={props.description}
